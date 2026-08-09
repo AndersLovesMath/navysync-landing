@@ -40,10 +40,16 @@ export default function ContactPage() {
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-[1fr_0.85fr] lg:items-start">
           <div>
-            <h2 className="font-headline text-2xl font-extrabold tracking-tight sm:text-3xl">
+            <h2
+              className="font-headline text-2xl font-extrabold tracking-tight sm:text-3xl"
+              data-reveal
+            >
               What we can help with
             </h2>
-            <div className="mt-8 grid gap-5 sm:grid-cols-3 lg:grid-cols-1">
+            <div
+              className="mt-8 grid gap-5 sm:grid-cols-3 lg:grid-cols-1"
+              data-reveal="stagger"
+            >
               {reasons.map((reason) => (
                 <div
                   key={reason.title}
@@ -60,7 +66,10 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-outline-variant/50 bg-surface-container-lowest p-8 shadow-lg">
+          <div
+            className="rounded-3xl border border-outline-variant/50 bg-surface-container-lowest p-8 shadow-lg"
+            data-reveal
+          >
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
               Email
             </p>

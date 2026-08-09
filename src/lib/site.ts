@@ -44,7 +44,7 @@ export const features = [
   },
   {
     title: "Teams & Departments",
-    text: "Keep Color Guard, Drill Team, Orienteering, departments, and leadership groups organized.",
+    text: "Keep your teams, departments, and leadership groups organized.",
   },
   {
     title: "Study Tools",
@@ -66,6 +66,168 @@ export const audiences = [
     text: "Manage rosters, events, announcements, and access from the admin site.",
   },
 ];
+
+/* Full release history, newest first, matching the store listings. The About
+   page shows only the most recent few and keeps the rest behind a toggle. */
+export const releases = [
+  {
+    version: "1.0.12",
+    date: "2026-08-03",
+    notes: [
+      'Added searchable pickers for adding team and department members, and a new "Event Staff" section on the event form where you can assign the CIC and organizers directly by name instead of typing email addresses.',
+    ],
+  },
+  {
+    version: "1.0.11",
+    date: "2026-07-24",
+    notes: [
+      "Event checkout simplified so that one-tap check-out with confirmation replaces QR code scanning",
+    ],
+  },
+  {
+    version: "1.0.10",
+    date: "2026-07-13",
+    notes: ["Fix: Show all members in the members list"],
+  },
+  {
+    version: "1.0.9",
+    date: "2026-06-23",
+    notes: ["Added email sending feature"],
+  },
+  {
+    version: "1.0.8",
+    date: "2026-05-31",
+    notes: [
+      "Fixed learn content ordering.",
+      "Fixed error when viewing events",
+      "Everyone can make events now, but they require approval from administrators.",
+    ],
+  },
+  {
+    version: "1.0.7",
+    date: "2026-05-30",
+    notes: ["Changed the parent-view UI."],
+  },
+  {
+    version: "1.0.5",
+    date: "2026-05-07",
+    notes: [
+      "Fixed bugs in the calendar",
+      "Changed calendar date formatting",
+      "Reorganized dashboard",
+    ],
+  },
+  {
+    version: "1.0.3",
+    date: "2026-04-15",
+    notes: [
+      "Improved the quiz page",
+      "Added quick access on the dashboard for the learn page.",
+    ],
+  },
+  {
+    version: "1.0.2",
+    date: "2026-04-08",
+    notes: [
+      "Added onto the previous update by adding more quality of life changes.",
+    ],
+  },
+  {
+    version: "1.0.1",
+    date: "2026-03-27",
+    notes: ["New UI changes and easier announcements view"],
+  },
+  {
+    version: "1.0.0",
+    date: "2026-03-05",
+    notes: [
+      "Stabilized features. Improved calendar UI",
+      "Added better parent-student view features",
+      "Fixed bugs when creating announcements and events",
+    ],
+  },
+  {
+    version: "0.2.5",
+    date: "2026-02-24",
+    notes: ["Expanded instructor access"],
+  },
+  {
+    version: "0.2.4",
+    date: "2026-02-11",
+    notes: [
+      "Fixed wrong order of ribbon addition in the ribbon rack builder",
+      "Added quality of life improvements",
+      "Removed email verification, but added strict school code requirements",
+    ],
+  },
+  {
+    version: "0.2.1",
+    date: "2026-01-13",
+    notes: ["Added ribbon rack builder"],
+  },
+  {
+    version: "0.1.4",
+    date: "2025-12-07",
+    notes: ["Fixed student-parent linking", "Fixed flickering when logging in"],
+  },
+  {
+    version: "0.1.3",
+    date: "2025-11-23",
+    notes: [
+      "Added parent sign up and login and improved guest mode",
+      "Added some bug fixes like incorrect event numbering on the dashboard.",
+      "Added better personalization features.",
+    ],
+  },
+];
+
+/* How many releases show before "See all updates" opens the rest. */
+export const shownReleaseCount = 4;
+
+const DAY = 86_400_000;
+
+const MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+/* Both helpers read the date in UTC so a reader's time zone can never shift the
+   result by a day, and so the server and client always agree. */
+export const formatDate = (date: string) => {
+  const at = new Date(`${date}T00:00:00Z`);
+  return `${MONTHS[at.getUTCMonth()]} ${at.getUTCDate()}, ${at.getUTCFullYear()}`;
+};
+
+/* Coarse "3 weeks ago" phrasing, recomputed on the client so it never goes
+   stale against a page that was rendered ahead of time. */
+export const relativeTime = (date: string, now: Date = new Date()) => {
+  const days = Math.floor((now.getTime() - Date.parse(date)) / DAY);
+
+  if (days <= 0) return "today";
+  if (days === 1) return "yesterday";
+  if (days < 7) return `${days} days ago`;
+
+  const plural = (elapsed: number, unit: string) => {
+    const count = Math.max(1, elapsed);
+    return `${count} ${unit}${count === 1 ? "" : "s"} ago`;
+  };
+
+  // Elapsed units are counted, not rounded, so a release stays "1 month ago"
+  // until it is genuinely two months old -- the same way the stores phrase it.
+  if (days < 30) return plural(Math.floor(days / 7), "week");
+  if (days < 365) return plural(Math.floor(days / 30.44), "month");
+  return plural(Math.floor(days / 365.25), "year");
+};
 
 export const setupSteps = [
   {

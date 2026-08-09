@@ -75,3 +75,66 @@ html {
 .command-gradient {
   background: linear-gradient(135deg, #00327d 0%, #0047ab 100%);
 }
+
+/* Scroll reveal. Elements marked [data-reveal] fade up when they enter the
+   viewport; ScrollReveal.tsx flips data-revealed on. Use data-reveal="stagger"
+   to run the effect across an element's direct children in sequence. The no-JS
+   fallback lives in a <noscript> block in layout.tsx. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal]:not([data-reveal="stagger"]),
+  [data-reveal="stagger"] > * {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  [data-reveal][data-revealed]:not([data-reveal="stagger"]),
+  [data-reveal="stagger"][data-revealed] > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  [data-reveal="stagger"] > *:nth-child(2) {
+    transition-delay: 80ms;
+  }
+  [data-reveal="stagger"] > *:nth-child(3) {
+    transition-delay: 160ms;
+  }
+  [data-reveal="stagger"] > *:nth-child(4) {
+    transition-delay: 240ms;
+  }
+  [data-reveal="stagger"] > *:nth-child(5) {
+    transition-delay: 320ms;
+  }
+  [data-reveal="stagger"] > *:nth-child(6) {
+    transition-delay: 400ms;
+  }
+
+  /* Hero and page headers sit above the fold, so they animate on load rather
+     than waiting for hydration to set up the observer. */
+  [data-rise] > * {
+    animation: reveal-rise 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  [data-rise] > *:nth-child(2) {
+    animation-delay: 110ms;
+  }
+  [data-rise] > *:nth-child(3) {
+    animation-delay: 220ms;
+  }
+  [data-rise] > *:nth-child(4) {
+    animation-delay: 330ms;
+  }
+}
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

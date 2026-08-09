@@ -9,7 +9,7 @@ export default function DownloadSection() {
     >
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
-          <div>
+          <div data-reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
               Download
             </p>
@@ -50,7 +50,7 @@ export default function DownloadSection() {
             </div>
           </div>
 
-          <ol className="grid gap-4">
+          <ol className="grid gap-4" data-reveal="stagger">
             {setupSteps.map((step, index) => (
               <li
                 key={step.title}

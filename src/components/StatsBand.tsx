@@ -5,10 +5,16 @@ export default function StatsBand() {
   return (
     <section className="border-b border-outline-variant/40 bg-surface-container-lowest">
       <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
+        <p
+          className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary"
+          data-reveal
+        >
           Serving NJROTC units
         </p>
-        <dl className="mt-8 grid grid-cols-2 gap-8 sm:grid-cols-4">
+        <dl
+          className="mt-8 grid grid-cols-2 gap-8 sm:grid-cols-4"
+          data-reveal="stagger"
+        >
           {stats.map((stat) => (
             <div key={stat.label}>
               <dt className="sr-only">{stat.label}</dt>

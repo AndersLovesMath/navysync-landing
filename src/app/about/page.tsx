@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
+import ReleaseList from "@/components/ReleaseList";
 import {
   contactEmail,
-  features,
   founder,
   instagramHandle,
   instagramUrl,
@@ -13,7 +13,7 @@ import {
 
 export const metadata: Metadata = {
   title: "About",
-  description: `What NavySync does for NJROTC units, how the mobile app and admin website fit together, and the story behind it from founder ${founder.name}.`,
+  description: `The latest NavySync releases, how the mobile app and admin website fit together, and the story behind it from founder ${founder.name}.`,
 };
 
 export default function AboutPage() {
@@ -26,35 +26,24 @@ export default function AboutPage() {
       />
 
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl" data-reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
-            What it covers
+            Latest updates
           </p>
           <h2 className="mt-4 font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
-            One place for the moving parts of unit life.
+            NavySync ships updates often.
           </h2>
+          <p className="mt-4 text-base leading-7 text-on-surface-variant">
+            The most recent releases on the App Store and Google Play.
+          </p>
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {features.map((feature) => (
-            <article
-              key={feature.title}
-              className="rounded-2xl border border-outline-variant/50 bg-surface-container-lowest p-6 transition hover:border-primary/40 hover:shadow-lg"
-            >
-              <h3 className="font-headline text-lg font-bold text-primary">
-                {feature.title}
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-on-surface-variant">
-                {feature.text}
-              </p>
-            </article>
-          ))}
-        </div>
+        <ReleaseList />
       </section>
 
       <section className="border-y border-outline-variant/40 bg-surface-container-low">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl" data-reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
               How it fits together
             </p>
@@ -62,7 +51,7 @@ export default function AboutPage() {
               A mobile app and an admin website.
             </h2>
           </div>
-          <div className="mt-12 grid gap-5 lg:grid-cols-2">
+          <div className="mt-12 grid gap-5 lg:grid-cols-2" data-reveal="stagger">
             <div className="rounded-2xl border border-outline-variant/50 bg-surface-container-lowest p-7">
               <h3 className="font-headline text-xl font-bold text-primary">
                 Mobile app
@@ -99,7 +88,10 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <div
+          className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center"
+          data-reveal="stagger"
+        >
           <div className="flex justify-center lg:justify-start">
             <div className="relative">
               <div className="absolute -bottom-4 -right-4 h-full w-full rounded-3xl bg-primary-fixed" />

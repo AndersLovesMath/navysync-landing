@@ -13,7 +13,10 @@ export default function PageHeader({
     <section className="command-gradient relative overflow-hidden text-on-primary">
       <HeaderDecor />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
+      <div
+        className="relative z-10 mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20"
+        data-rise
+      >
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-fixed-dim">
           {eyebrow}
         </p>

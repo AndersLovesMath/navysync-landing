@@ -11,7 +11,7 @@ export default function Home() {
         <HeroDecor />
 
         <div className="relative z-10 mx-auto max-w-6xl px-5 py-24 sm:px-8 lg:py-32">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl" data-rise>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-fixed-dim">
               Built for NJROTC units
             </p>
@@ -44,7 +44,7 @@ export default function Home() {
       <StatsBand />
 
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl" data-reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
             What it covers
           </p>
@@ -57,7 +57,10 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div
+          className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          data-reveal="stagger"
+        >
           {features.map((feature) => (
             <article
               key={feature.title}
@@ -76,7 +79,7 @@ export default function Home() {
 
       <section className="border-y border-outline-variant/40 bg-surface-container-low">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl" data-reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
               Who it is for
             </p>
@@ -84,7 +87,7 @@ export default function Home() {
               Three audiences, one source of truth.
             </h2>
           </div>
-          <div className="mt-12 grid gap-8 sm:grid-cols-3">
+          <div className="mt-12 grid gap-8 sm:grid-cols-3" data-reveal="stagger">
             {audiences.map((item) => (
               <div key={item.role}>
                 <h3 className="font-headline text-lg font-bold text-on-surface">
@@ -99,6 +102,7 @@ export default function Home() {
           <Link
             className="mt-10 inline-flex text-sm font-semibold text-primary underline underline-offset-4 hover:text-primary-container"
             href="/about"
+            data-reveal
           >
             More about how NavySync works
           </Link>
