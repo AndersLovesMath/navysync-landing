@@ -2,8 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   contactEmail,
+  formatDate,
   instagramHandle,
   instagramUrl,
+  lastUpdated,
   navLinks,
 } from "@/lib/site";
 
@@ -72,9 +74,11 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-outline-variant/50 pt-6">
-          <p className="text-sm text-on-surface-variant">
-            NavySync &copy; 2026
+        <div className="mt-10 flex flex-col gap-2 border-t border-outline-variant/50 pt-6 text-sm text-on-surface-variant sm:flex-row sm:items-center sm:justify-between">
+          <p>NavySync &copy; 2026</p>
+          <p>
+            Last updated{" "}
+            <time dateTime={lastUpdated}>{formatDate(lastUpdated)}</time>
           </p>
         </div>
       </div>

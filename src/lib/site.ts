@@ -21,11 +21,15 @@ export const founder = {
 };
 
 export const stats = [
-  { value: "300+", label: "Downloads" },
+  { value: "400+", label: "Downloads" },
   { value: "6", label: "Schools" },
   { value: "3", label: "States" },
   { value: "5.0", label: "App Store rating" },
 ];
+
+/* Bump this whenever the site's own copy changes (stats, releases, wording).
+   It is the site's date, not the app's -- the release list above tracks that. */
+export const lastUpdated = "2026-08-12";
 
 export const navLinks = [
   { href: "/", label: "Home" },
@@ -70,6 +74,11 @@ export const audiences = [
 /* Full release history, newest first, matching the store listings. The About
    page shows only the most recent few and keeps the rest behind a toggle. */
 export const releases = [
+  {
+    version: "1.0.13",
+    date: "2026-08-12",
+    notes: ["Added the parent event page", "Rethemed the parent page"],
+  },
   {
     version: "1.0.12",
     date: "2026-08-03",
@@ -213,8 +222,8 @@ export const formatDate = (date: string) => {
 export const relativeTime = (date: string, now: Date = new Date()) => {
   const days = Math.floor((now.getTime() - Date.parse(date)) / DAY);
 
-  if (days <= 0) return "today";
-  if (days === 1) return "yesterday";
+  if (days <= 0) return "Today";
+  if (days === 1) return "Yesterday";
   if (days < 7) return `${days} days ago`;
 
   const plural = (elapsed: number, unit: string) => {
