@@ -21,7 +21,7 @@ export const founder = {
 };
 
 export const stats = [
-  { value: "400+", label: "Downloads" },
+  { value: "600+", label: "Downloads" },
   { value: "6", label: "Schools" },
   { value: "3", label: "States" },
   { value: "5.0", label: "App Store rating" },
@@ -29,7 +29,7 @@ export const stats = [
 
 /* Bump this whenever the site's own copy changes (stats, releases, wording).
    It is the site's date, not the app's -- the release list above tracks that. */
-export const lastUpdated = "2026-08-12";
+export const lastUpdated = "2026-08-21";
 
 export const navLinks = [
   { href: "/", label: "Home" },
