@@ -78,10 +78,9 @@ export const releases = [
     version: "1.1.0",
     date: "2026-08-29",
     notes: [
-      "Added a dark theme",
-      "Added support for multiple departments",
-      "Added the unit view page",
-      "Revamped the guest page",
+      "Added dark theme and fixed margin errors",
+      "Added support for multiple departments and expanded department features",
+      "Added the unit view page and revamped the guest page",
     ],
   },
   {
