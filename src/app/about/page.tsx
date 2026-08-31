@@ -6,7 +6,6 @@ import ReleaseList from "@/components/ReleaseList";
 import {
   contactEmail,
   founder,
-  instagramHandle,
   instagramUrl,
   stats,
 } from "@/lib/site";
@@ -145,7 +144,7 @@ export default function AboutPage() {
                 className="rounded-full bg-primary px-6 py-3 text-center text-sm font-semibold text-on-primary shadow-sm transition hover:bg-primary-container"
                 href={`mailto:${contactEmail}`}
               >
-                Email the team
+                Gmail
               </a>
               <a
                 className="rounded-full border border-outline-variant px-6 py-3 text-center text-sm font-semibold text-primary transition hover:border-primary hover:bg-primary-fixed/50"
@@ -153,7 +152,7 @@ export default function AboutPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Follow {instagramHandle}
+                Instagram
               </a>
             </div>
           </div>

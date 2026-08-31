@@ -3,7 +3,6 @@ import Link from "next/link";
 import {
   contactEmail,
   formatDate,
-  instagramHandle,
   instagramUrl,
   lastUpdated,
   navLinks,
@@ -56,7 +55,7 @@ export default function SiteFooter() {
                     className="break-words text-on-surface-variant transition hover:text-primary"
                     href={`mailto:${contactEmail}`}
                   >
-                    {contactEmail}
+                    Gmail
                   </a>
                 </li>
                 <li>
@@ -66,7 +65,7 @@ export default function SiteFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Instagram {instagramHandle}
+                    Instagram
                   </a>
                 </li>
               </ul>

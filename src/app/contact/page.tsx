@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import {
   contactEmail,
-  instagramHandle,
   instagramUrl,
   mailto,
 } from "@/lib/site";
@@ -77,7 +76,7 @@ export default function ContactPage() {
               className="mt-3 block break-words font-headline text-2xl font-extrabold tracking-tight text-primary hover:text-primary-container"
               href={`mailto:${contactEmail}`}
             >
-              {contactEmail}
+              Gmail
             </a>
             <p className="mt-4 text-sm leading-6 text-on-surface-variant">
               Include your unit name and role so we can point you to the right
@@ -95,14 +94,14 @@ export default function ContactPage() {
 
             <div className="mt-8 border-t border-outline-variant/50 pt-6">
               <p className="text-sm text-on-surface-variant">
-                Prefer social? Message us on Instagram at{" "}
+                Prefer social? Message us on{" "}
                 <a
                   className="font-semibold text-primary hover:text-primary-container"
                   href={instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {instagramHandle}
+                  Instagram
                 </a>
                 .
               </p>
