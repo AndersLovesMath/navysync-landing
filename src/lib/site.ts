@@ -29,7 +29,7 @@ export const stats = [
 
 /* Bump this whenever the site's own copy changes (stats, releases, wording).
    It is the site's date, not the app's -- the release list above tracks that. */
-export const lastUpdated = "2026-08-29";
+export const lastUpdated = "2026-08-31";
 
 export const navLinks = [
   { href: "/", label: "Home" },
