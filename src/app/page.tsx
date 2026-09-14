@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CoverageSection from "@/components/CoverageSection";
 import { HeroDecor } from "@/components/Decorations";
 import DownloadSection from "@/components/DownloadSection";
 import StatsBand from "@/components/StatsBand";
@@ -42,6 +43,8 @@ export default function Home() {
       </section>
 
       <StatsBand />
+
+      <CoverageSection />
 
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
         <div className="max-w-2xl" data-reveal>

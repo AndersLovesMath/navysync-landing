@@ -20,16 +20,30 @@ export const founder = {
   avatar: "/avatar.jpg",
 };
 
+/* NJROTC programs running on NavySync, by state code. Drives the coverage map
+   on the home page, where each program is one block stacked on its state;
+   states not listed render as empty tiles. */
+export const programsByState: Record<string, number> = {
+  CA: 10,
+  NV: 1,
+  PA: 1,
+};
+
+export const programCount = Object.values(programsByState).reduce(
+  (sum, count) => sum + count,
+  0,
+);
+
 export const stats = [
   { value: "600+", label: "Downloads" },
-  { value: "9", label: "Schools" },
-  { value: "3", label: "States" },
+  { value: String(programCount), label: "Schools" },
+  { value: String(Object.keys(programsByState).length), label: "States" },
   { value: "5.0", label: "App Store rating" },
 ];
 
 /* Bump this whenever the site's own copy changes (stats, releases, wording).
    It is the site's date, not the app's -- the release list above tracks that. */
-export const lastUpdated = "2026-09-04";
+export const lastUpdated = "2026-09-13";
 
 export const navLinks = [
   { href: "/", label: "Home" },

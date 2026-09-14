@@ -43,7 +43,7 @@ export default function RootLayout({
         <noscript>
           {/* Scroll reveal starts hidden and is switched on by script, so undo
               it entirely when there is no script to run. */}
-          <style>{`[data-reveal],[data-reveal] > *{opacity:1!important;transform:none!important}`}</style>
+          <style>{`[data-reveal],[data-reveal] > *,[data-reveal] .map-column{opacity:1!important;transform:none!important}`}</style>
         </noscript>
         <ScrollReveal />
         <SiteHeader />

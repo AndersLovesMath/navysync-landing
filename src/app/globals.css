@@ -112,6 +112,21 @@ html {
     transition-delay: 400ms;
   }
 
+  /* Columns on the coverage map rise off the board once the map itself is in
+     view; UsMap.tsx numbers them with --i for the stagger. */
+  [data-reveal] .map-column {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition:
+      opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(350ms + var(--i, 0) * 110ms);
+  }
+  [data-reveal][data-revealed] .map-column {
+    opacity: 1;
+    transform: none;
+  }
+
   /* Hero and page headers sit above the fold, so they animate on load rather
      than waiting for hydration to set up the observer. */
   [data-rise] > * {
