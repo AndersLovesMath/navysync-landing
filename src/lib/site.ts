@@ -43,7 +43,7 @@ export const stats = [
 
 /* Bump this whenever the site's own copy changes (stats, releases, wording).
    It is the site's date, not the app's -- the release list above tracks that. */
-export const lastUpdated = "2026-09-13";
+export const lastUpdated = "2026-10-04";
 
 export const navLinks = [
   { href: "/", label: "Home" },
@@ -88,6 +88,15 @@ export const audiences = [
 /* Full release history, newest first, matching the store listings. The About
    page shows only the most recent few and keeps the rest behind a toggle. */
 export const releases = [
+  {
+    version: "2.0.0",
+    date: "2026-09-29",
+    notes: [
+      "Fixed logic errors during onboarding",
+      "Revamped homepage UI",
+      "Fixed visual errors in Learn & Study page and Announcements page",
+    ],
+  },
   {
     version: "1.1.1",
     date: "2026-09-04",
