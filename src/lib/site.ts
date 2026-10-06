@@ -260,17 +260,24 @@ const MONTHS = [
   "Dec",
 ];
 
-/* Both helpers read the date in UTC so a reader's time zone can never shift the
-   result by a day, and so the server and client always agree. */
+/* Reads the date in UTC so a reader's time zone can never shift the printed
+   day, and so the server and client always agree. */
 export const formatDate = (date: string) => {
   const at = new Date(`${date}T00:00:00Z`);
   return `${MONTHS[at.getUTCMonth()]} ${at.getUTCDate()}, ${at.getUTCFullYear()}`;
 };
 
 /* Coarse "3 weeks ago" phrasing, recomputed on the client so it never goes
-   stale against a page that was rendered ahead of time. */
+   stale against a page that was rendered ahead of time. Counts calendar days
+   on the reader's own clock, so a release dated today reads "Today" all day
+   wherever they are. */
 export const relativeTime = (date: string, now: Date = new Date()) => {
-  const days = Math.floor((now.getTime() - Date.parse(date)) / DAY);
+  const [year, month, day] = date.split("-").map(Number);
+  const released = new Date(year, month - 1, day);
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  // Rounded rather than floored: a daylight-saving switch makes some local
+  // days 23 or 25 hours long.
+  const days = Math.round((today.getTime() - released.getTime()) / DAY);
 
   if (days <= 0) return "Today";
   if (days === 1) return "Yesterday";
