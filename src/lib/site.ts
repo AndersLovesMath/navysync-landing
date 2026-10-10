@@ -24,7 +24,7 @@ export const founder = {
    on the home page, where each program is one block stacked on its state;
    states not listed render as empty tiles. */
 export const programsByState: Record<string, number> = {
-  CA: 10,
+  CA: 11,
   NV: 1,
   PA: 1,
 };
@@ -43,7 +43,7 @@ export const stats = [
 
 /* Bump this whenever the site's own copy changes (stats, releases, wording).
    It is the site's date, not the app's -- the release list above tracks that. */
-export const lastUpdated = "2026-10-08";
+export const lastUpdated = "2026-10-10";
 
 export const navLinks = [
   { href: "/", label: "Home" },
