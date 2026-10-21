@@ -97,8 +97,8 @@ export default function AboutPage() {
               <Image
                 src={founder.avatar}
                 alt={`${founder.name}, ${founder.role} of NavySync`}
-                width={306}
-                height={512}
+                width={878}
+                height={1186}
                 className="relative w-64 rounded-3xl object-cover shadow-xl sm:w-72"
               />
             </div>
