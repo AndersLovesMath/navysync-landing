@@ -76,6 +76,13 @@ html {
   background: linear-gradient(135deg, #00327d 0%, #0047ab 100%);
 }
 
+/* Hover colors for a coverage map column, read by the per-state rules UsMap
+   writes into its own <style>. Referenced here so Tailwind keeps the tokens. */
+.map-column {
+  --map-column-top-hover: var(--color-inverse-primary);
+  --map-column-label-hover: var(--color-on-primary-fixed);
+}
+
 /* Scroll reveal. Elements marked [data-reveal] fade up when they enter the
    viewport; ScrollReveal.tsx flips data-revealed on. Use data-reveal="stagger"
    to run the effect across an element's direct children in sequence. The no-JS

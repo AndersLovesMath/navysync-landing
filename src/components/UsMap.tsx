@@ -90,42 +90,61 @@ export default function UsMap({ counts }: { counts: Record<string, number> }) {
         ))}
       </g>
 
-      {/* Columns, back to front, so nearer states paint over farther ones. */}
+      {/* Columns, one layer of height at a time across every state. On this
+          board a higher point always sits in front of a lower one on the same
+          spot of screen, so painting by height is right in every direction --
+          painting whole columns back to front is not: a tall state would cover
+          a shorter neighbor's top with its own lower walls wherever their
+          border runs north-south, as California's does with Nevada's. */}
+      {stack(1, tallest).map((lift) =>
+        active.map((state, order) => {
+          const height = columnHeight(counts[state.code]);
+          if (lift > height) return null;
+
+          return (
+            <g
+              key={`${lift}-${state.code}`}
+              data-column={state.code}
+              className="map-column"
+              style={{ "--i": order } as CSSProperties}
+            >
+              <title>{`${state.name}: ${programLabel(counts[state.code])}`}</title>
+              <use
+                href={`#us-${state.code}`}
+                transform={squash}
+                y={inside(-lift)}
+                className={
+                  lift < height
+                    ? "fill-primary"
+                    : "map-column-top fill-primary-container stroke-primary-fixed-dim transition-colors"
+                }
+                strokeWidth={lift < height ? undefined : 0.75}
+              />
+            </g>
+          );
+        }),
+      )}
+
+      {/* Labels last, so a taller column never hides a shorter one's count. */}
       {active.map((state, order) => {
         const count = counts[state.code];
-        const height = columnHeight(count);
         const x = state.cx;
-        const y = state.cy * DEPTH - height;
+        const y = state.cy * DEPTH - columnHeight(count);
 
         return (
           <g
             key={state.code}
-            className="map-column group"
+            data-column={state.code}
+            className="map-column"
             style={{ "--i": order } as CSSProperties}
           >
             <title>{`${state.name}: ${programLabel(count)}`}</title>
-            <g transform={squash}>
-              {stack(1, height - 1).map((lift) => (
-                <use
-                  key={lift}
-                  href={`#us-${state.code}`}
-                  y={inside(-lift)}
-                  className="fill-primary"
-                />
-              ))}
-              <use
-                href={`#us-${state.code}`}
-                y={inside(-height)}
-                className="fill-primary-container stroke-primary-fixed-dim transition-colors group-hover:fill-inverse-primary"
-                strokeWidth={0.75}
-              />
-            </g>
             <text
               x={x}
               y={y}
               dy="-0.05em"
               textAnchor="middle"
-              className="fill-on-primary font-headline text-[26px] font-extrabold transition-colors group-hover:fill-on-primary-fixed sm:text-[18px]"
+              className="map-column-label fill-on-primary font-headline text-[26px] font-extrabold transition-colors sm:text-[18px]"
             >
               {count}
             </text>
@@ -134,13 +153,26 @@ export default function UsMap({ counts }: { counts: Record<string, number> }) {
               y={y}
               dy="0.95em"
               textAnchor="middle"
-              className="fill-on-primary/80 text-[13px] font-semibold transition-colors group-hover:fill-on-primary-fixed sm:text-[9px]"
+              className="map-column-label fill-on-primary/80 text-[13px] font-semibold transition-colors sm:text-[9px]"
             >
               {state.code}
             </text>
           </g>
         );
       })}
+
+      {/* A column's layers are interleaved with every other state's, so they
+          can't share one hover group; light the whole column whenever any of
+          its pieces is hovered instead. */}
+      <style>
+        {active
+          .map(
+            ({ code }) =>
+              `svg:has([data-column="${code}"]:hover) [data-column="${code}"] .map-column-top{fill:var(--map-column-top-hover)}` +
+              `svg:has([data-column="${code}"]:hover) [data-column="${code}"] .map-column-label{fill:var(--map-column-label-hover)}`,
+          )
+          .join("")}
+      </style>
     </svg>
   );
 }
