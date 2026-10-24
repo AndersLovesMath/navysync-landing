@@ -36,7 +36,7 @@ export const programCount = Object.values(programsByState).reduce(
 );
 
 export const stats = [
-  { value: "600+", label: "Downloads" },
+  { value: "1000+", label: "Downloads" },
   { value: String(programCount), label: "Schools" },
   { value: String(Object.keys(programsByState).length), label: "States" },
   { value: "5.0", label: "App Store rating" },
@@ -44,7 +44,7 @@ export const stats = [
 
 /* Bump this whenever the site's own copy changes (stats, releases, wording).
    It is the site's date, not the app's -- the release list above tracks that. */
-export const lastUpdated = "2026-10-21";
+export const lastUpdated = "2026-10-23";
 
 export const navLinks = [
   { href: "/", label: "Home" },
